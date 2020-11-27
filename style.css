@@ -1,0 +1,34 @@
+.main {
+    background-color: black;
+}
+
+.aside {
+    background: rgb(78, 60, 27);
+    background: linear-gradient(252deg, rgba(78, 60, 27, 1) 15%, rgba(6, 6, 6, 1) 51%, rgba(78, 60, 27, 1) 92%);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffa500;
+    margin: 20px auto;
+}
+
+.logo h1 {
+    font-family: Samarkan;
+    margin-left: 20px;
+    font-size: 80px;
+}
+
+.displayBox {
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.scroll-box {
+    overflow-y: auto;
+    height: 500px;
+    float: left;
+    padding: 1rem;
+}
