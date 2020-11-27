@@ -1,0 +1,106 @@
+ 
+
+
+                         doing git on gitbagh
+
+
+Download and install git
+
+1)firstly create a empty folder on pc.click on it and select git bash here
+2)Now on terminal enter
+
+touch index.html
+touch script.js
+
+3)Above lines will create 2 new files
+4)then in terminal enter
+
+$ git init
+
+5)above line will initilise current folder as git repository
+
+6)before moving on add user anme and email by typing below lines in terminal
+
+
+$ git config --global user.name 'Sai Bharadwaj'
+$  git config --global user.email 'saibharadwaj.k3@gmail.com'
+
+7)here are useful commands
+
+
+8)$ git add index.html(adds index.html into staging area)
+9)$ git status-shows status of current folder like (files that are modified,files that arre staged,files that are yet to be commited ,files that are commited and yet to be pushed etc..)
+10)$ git rm --cached index.html(removes index.html into staging area)
+11)$ git add . -( adds all files to the staging area)
+12)$ git commit -m 'changed index html'(commmits files and makes the ready to be pushed('matter in is commit message'))
+13)now go to git hub and create a repository
+14)copy link
+15)type n below line and past link aside
+16)$ git remote add origin https://github.com/saibharadwajk3/myappsample.git
+17)Now just push it by 
+18)$ git push -u origin master
+
+
+
+output:
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (20/20), 1.90 KiB | 102.00 KiB/s, done.
+Total 20 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (5/5), done.
+To https://github.com/saibharadwajk3/myappsample.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+19)$ git remote commmand noew should return origin
+
+
+
+creating branches
+
+
+20)$git checkout master-comming out of main branch
+21)$ git branch login-creating new branch(add files in it and do what ever you want)
+22)come out of login
+23)$ git merge login
+24)now add to stage ,commit and push.
+
+
+
+
+
+
+                           doing git in vs code
+
+1)load an empty folder
+2)click git symbol and initilise repository
+3)U-stands for untracked file
+4)click on + to add changes
+5)now U becomes A that means changes are added
+6)now to commit changes type commiit message and click on tick mark
+7)use git log to see your commit or use time line by clicking file button and then time line on left bottom
+8)now make a change and you should see modified M on the file
+9)stage them
+9)click on git icon ,then commit,commit all(ammend) so that commit gets added to old one without adding new one then add commit message and enter
+10)now going to github and creating repo and copying links
+11)run them in console and done
+12)now to pull chage file on github and save(this can also be done by your projrct partner)
+13)now come back to vs code and just click pull
+
+cloning
+
+1)select a repo link on github
+2)open vs code,click on git icon ,paste link and open file
+
+branches
+
+
+
+
+
+
+
+
+
