@@ -16,17 +16,23 @@
 <body>
     <!-- main container -->
     <div class="container">
+
+        <div class="header row ">
+            <div class="col-md-12">
+                <div class="logo">
+                    <i class="fas fa-book-open fa-7x"></i>
+                    <h1 class="text">Paathak
+                        <p class="quote">--Unearth Your Books--</p>
+                    </h1>
+                </div>
+
+            </div>
+        </div>
         <!-- the one big row -->
         <div class="row">
             <!-- main col that has book -->
-            <div class="col-md-8 main">
-                <div class="logo">
+            <div class="col-md-9 main">
 
-                    <i class="fas fa-book-open fa-7x"></i>
-                    <h1 class="text">Paathak</h1>
-
-
-                </div>
 
                 <div class="card mb-4">
                     <h2 class="card-header" id="booktitle">Book-Title</h2>
@@ -40,11 +46,14 @@
 
 
                     </div>
-                    <div class="card-footer text-muted"><a href="#">my portfolio</a></div>
+                    <div class="card-footer text-muted">
+                        <a href="https://github.com/saibharadwajk3/PAATHAK.git" target="_blank">Check out code at <i
+                                class="fa fa-github fa-2x"></i></a>
+                    </div>
                 </div>
             </div>
             <!-- side col that has extra info -->
-            <div class="col-md-4 aside">
+            <div class="col-md-3 aside">
 
                 <!-- search box -->
                 <div class="card my-4">
@@ -53,7 +62,8 @@
                         <div class="input-group">
                             <input type="text" class="form-control" id="keyword" placeholder="search for..">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary ml-2" type="button">Search</button>
+                                <button class="btn btn-secondary mt-1  ml-1 btn-sm" type="button"
+                                    onclick="mark()">Search</button>
 
 
                             </span>
@@ -73,55 +83,71 @@
                             <div class="col-md-12">
 
                                 <ul class="list-unstyled mb-0">
-                                    <li><a href="#" onclick="loadbook('git.txt','how to use git')">Book1</a></li>
-                                    <li><a href="#">Book2</a></li>
-                                    <li><a href="#">Book3</a></li>
+                                    <li><a href="#" onclick="loadbook('sample1.txt','sample1.txt')">sample1.txt</a>
+                                    </li>
+                                    <li><a href="#" onclick="loadbook('sample2.txt','sample2.txt')">
+                                            sample2.txt</a></li>
+                                    <li><a href="#" onclick="loadbook('sample3.txt ','sample3.txt')">sample3.txt</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                    </div>
                 </div>
                 <!-- Most used word -->
                 <div class="card my-4">
-                    <h5 class="card-header my-4">Most Used Word</h5>
+                    <h5 class="card-header">Most Used Word</h5>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="list-unstyled mb-0" id="mostUsed">
 
-                                </ul>
 
-                            </div>
-                        </div>
+                        <ul class="list-unstyled mb-0" id="mostUsed">
+                            <p>select a book</p>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
                     </div>
                 </div>
                 <!-- least used word -->
 
                 <div class="card my-4">
-                    <h5 class="card-header my-4">Least Used Word</h5>
+                    <h5 class="card-header">Least Used Word</h5>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
+
                                 <ul class="list-unstyled mb-0" id="leastUsed">
+                                    <p>select a book</p>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                    </div>
+                </div>
+                <!-- doc stats -->
+                <div class="card my-4">
+                    <h5 class="card-header">Document stats</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <ul class="list-unstyled mb-0" id="docStats">
+
+                                    <li id="docLength">
+                                        <p>select a book</p>
+                                    </li>
+                                    <li id="wordCount"></li>
 
                                 </ul>
 
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- doc stats -->
-                <div class="card my-4">
-                    <h5 class="card-header my-4">Document stats</h5>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="list-unstyled mb-0" id="docStats">
-
-                                </ul>
-
-                            </div>
-                        </div>
+                    <div class="card-footer">
                     </div>
                 </div>
             </div>
@@ -147,7 +173,12 @@
 
 
 
+    <script id="template-ul-items" type=text/template>
+        <li>
+            {{val}}
+        </li>
 
+    </script>
 
 
 

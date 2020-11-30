@@ -1,34 +1,94 @@
-.main {
-    background-color: black;
-}
-
-.aside {
+    .container {
+        background-color: black;
+        box-shadow: 0 5px 8px 0 rgba(229, 46, 113, 1), 0 7px 20px 0 rgba(255, 138, 0, 1);
+    }
+    /* .aside {
     background: rgb(78, 60, 27);
     background: linear-gradient(252deg, rgba(78, 60, 27, 1) 15%, rgba(6, 6, 6, 1) 51%, rgba(78, 60, 27, 1) 92%);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffa500;
-    margin: 20px auto;
-}
-
-.logo h1 {
-    font-family: Samarkan;
-    margin-left: 20px;
-    font-size: 80px;
-}
-
-.displayBox {
-    width: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.scroll-box {
-    overflow-y: auto;
-    height: 500px;
-    float: left;
-    padding: 1.1rem;
-}
+} */
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background: rgb(229, 46, 113); */
+        color: rgba(255, 138, 0, 1);
+    }
+    
+    .text {
+        font-family: Samarkan;
+        margin: 20px;
+        font-size: 80px;
+    }
+    
+    .quote {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 60px;
+        font-size: 14px;
+        color: rgba(229, 46, 113, 1)
+    }
+    
+    .displayBox {
+        width: 100%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .scroll-box {
+        overflow-y: auto;
+        height: 500px;
+        float: left;
+        padding: 1.1rem;
+    }
+    
+    .main .card-body {
+        background: black;
+        color: white;
+    }
+    
+    .aside .card-body {
+        display: none;
+    }
+    
+    .aside .card:hover .card-body {
+        background-color: black;
+        color: white;
+        display: block;
+        text-align: center;
+        animation: fade_in_show 1s;
+    }
+    
+    @keyframes fade_in_show {
+        0% {
+            opacity: 0;
+            transform: scale(0)
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1)
+        }
+    }
+    
+    .aside {
+        /* margin-top: -100px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .aside .card-header,
+    .aside .card-footer {
+        background: rgb(229, 46, 113);
+        background: linear-gradient(252deg, rgba(229, 46, 113, 1) 36%, rgba(255, 138, 0, 1) 84%);
+    }
+    
+    a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .main a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
