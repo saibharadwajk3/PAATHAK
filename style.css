@@ -92,3 +92,12 @@
         display: block;
         text-align: center;
     }
+
+.fa-github:hover {
+        opacity: 1;
+    }
+    
+    .fa-github {
+        margin-left: 10px;
+        opacity: .5;
+    }
