@@ -16,7 +16,7 @@ function loadbook(filename, displayname) {
     //reseat user interface
     booktitle.innerHTML = displayname;
     searchstat.innerHTML = "";
-    keyword.value = " ";
+    keyword.value = "";
 
     //request
     var xhr = new XMLHttpRequest();
@@ -147,10 +147,6 @@ function filterNoiseWords(wordArray) {
 
 function noisewords() {
     return [
-        "i",
-        "said",
-        "like",
-        "don't",
         "a",
         "about",
         "above",
@@ -480,7 +476,7 @@ function mark() {
 
     var display = filecontent;
     var newContent = "";
-
+    console.log(keyword);
     let spans = document.querySelectorAll("mark");
     //<mark>harry</harry>
     //harry
@@ -488,25 +484,27 @@ function mark() {
     for (var i = 0; i < spans.length; i++) {
         spans[i].outerHTML = spans[i].innerHTML;
     }
+    if (keyword == "") {
+        alert("enter a word to search");
+    } else {
+        var re = new RegExp(keyword, "gi");
 
-    var re = new RegExp(keyword, "gi");
+        var replaceText = "<mark id='markme'>$&</mark>";
+        var bookContent = display.innerHTML;
+        //add the mark to book content
+        newContent = bookContent.replace(re, replaceText);
 
-    var replaceText = "<mark id='markme'>$&</mark>";
-    var bookContent = display.innerHTML;
-    //add the mark to book content
-    newContent = bookContent.replace(re, replaceText);
-    console.log(newContent);
-    display.innerHTML = newContent;
-    console.log(display);
+        display.innerHTML = newContent;
 
-    var count = document.querySelectorAll("mark").length;
+        var count = document.querySelectorAll("mark").length;
 
-    document.getElementById("searchstat").innerHTML =
-        "found" + " " + count + " " + "matche(s)";
+        document.getElementById("searchstat").innerHTML =
+            "found" + " " + count + " " + "matche(s)";
 
-    if (count > 0) {
-        var element = document.getElementById("markme");
+        if (count > 0) {
+            var element = document.getElementById("markme");
 
-        element.scrollIntoView();
+            element.scrollIntoView();
+        }
     }
 }
