@@ -6,9 +6,7 @@ let filecontent = document.getElementById("filecontent");
 let mostUsed = document.getElementById("mostUsed");
 let leastUsed = document.getElementById("leastUsed");
 let docStats = document.getElementById("docStats");
-
 //Loading book into majn body
-
 function loadbook(filename, displayname) {
     let currentBook = "";
     let url = "books/" + filename;
@@ -36,13 +34,10 @@ function loadbook(filename, displayname) {
         }
     };
 }
-
 ///document stats
-
 function DocStats(filecontent) {
     var docLength = document.getElementById("docLength");
     var wordCount = document.getElementById("wordCount");
-    var charCount = document.getElementById("charCount");
     let text = filecontent.toLowerCase();
     // console.log(text);
 
@@ -79,16 +74,11 @@ function DocStats(filecontent) {
     }
 
     //calling array to get sorted array
-
     let wordList = sortarray(wordDictionary);
-
     //get top 5 words
-
-    var top5Words = wordList.slice(0, 6);
-    var least5Words = wordList.slice(-6, wordList.length);
-    // console.log(top5Words);
-    // console.log(least5Words);
-
+    var top5Words = wordList.slice(0, 5);
+    console.log(top5Words);
+    var least5Words = wordList.slice(-5, wordList.length);
     //add to ui
 
     ULTemplate(top5Words, document.getElementById("mostUsed"));
@@ -101,15 +91,9 @@ function DocStats(filecontent) {
 }
 
 function ULTemplate(items, element) {
-    let templateHTML = document.getElementById("template-ul-items").innerHTML;
-
     let resultsHTML = "";
-
-    for (i = 0; i < items.length - 1; i++) {
-        resultsHTML += templateHTML.replace(
-            "{{val}}",
-            items[i][0] + " : " + items[i][1] + "time(s)"
-        );
+    for (i = 0; i < items.length; i++) {
+        resultsHTML += `<li>${items[i][0]}:${items[i][1]}time(s)</li> `;
     }
     element.innerHTML = resultsHTML;
 }
@@ -122,365 +106,158 @@ function sortarray(obj) {
 
     return rtnAarray;
 }
-
 //FILTER NOISE WORDS
-
 function filterNoiseWords(wordArray) {
     var commonWords = noisewords();
-    var commonObj = {};
     var uncommonArr = [];
-
-    for (i = 0; i < commonWords.length; i++) {
-        commonObj[commonWords[i].trim()] = true;
-    }
-
     for (i = 0; i < wordArray.length; i++) {
         word = wordArray[i].trim().toLowerCase();
-
-        if (!commonObj[word]) {
+        if (!commonWords.includes(word)) {
             uncommonArr.push(word);
         }
     }
     return uncommonArr;
 }
 //noise words
-
 function noisewords() {
     return [
-        "a",
-        "about",
-        "above",
-        "above",
-        "across",
-        "after",
-        "afterwards",
-        "again",
-        "against",
-        "all",
-        "almost",
-        "alone",
-        "along",
-        "already",
-        "also",
-        "although",
-        "always",
-        "am",
-        "among",
-        "amongst",
-        "amoungst",
-        "amount",
-        "an",
-        "and",
-        "another",
-        "any",
-        "anyhow",
-        "anyone",
-        "anything",
-        "anyway",
-        "anywhere",
-        "are",
-        "around",
-        "as",
-        "at",
-        "back",
-        "be",
-        "became",
-        "because",
-        "become",
-        "becomes",
-        "becoming",
-        "been",
-        "before",
-        "beforehand",
-        "behind",
-        "being",
-        "below",
-        "beside",
-        "besides",
-        "between",
-        "beyond",
-        "bill",
-        "both",
-        "bottom",
-        "but",
-        "by",
-        "call",
-        "can",
-        "cannot",
-        "cant",
-        "co",
-        "con",
-        "could",
-        "couldnt",
-        "cry",
-        "de",
-        "describe",
-        "detail",
-        "do",
-        "done",
-        "down",
-        "due",
-        "during",
-        "each",
-        "eg",
-        "eight",
-        "either",
-        "eleven",
-        "else",
-        "elsewhere",
-        "empty",
-        "enough",
-        "etc",
-        "even",
-        "ever",
-        "every",
-        "everyone",
-        "everything",
-        "everywhere",
-        "except",
-        "few",
-        "fifteen",
-        "fify",
-        "fill",
-        "find",
-        "fire",
-        "first",
-        "five",
-        "for",
-        "former",
-        "formerly",
-        "forty",
-        "found",
-        "four",
-        "from",
-        "front",
-        "full",
-        "further",
-        "get",
-        "give",
-        "go",
-        "had",
-        "has",
-        "hasnt",
-        "have",
-        "he",
-        "hence",
-        "her",
-        "here",
-        "hereafter",
-        "hereby",
-        "herein",
-        "hereupon",
-        "hers",
-        "herself",
-        "him",
-        "himself",
-        "his",
-        "how",
-        "however",
-        "hundred",
-        "ie",
-        "if",
-        "in",
-        "inc",
-        "indeed",
-        "interest",
-        "into",
-        "is",
-        "it",
-        "its",
-        "itself",
-        "keep",
-        "last",
-        "latter",
-        "latterly",
-        "least",
-        "less",
-        "ltd",
-        "made",
-        "many",
-        "may",
+        "i",
         "me",
-        "meanwhile",
-        "might",
-        "mill",
-        "mine",
-        "more",
-        "moreover",
-        "most",
-        "mostly",
-        "move",
-        "much",
-        "must",
         "my",
         "myself",
-        "name",
-        "namely",
-        "neither",
-        "never",
-        "nevertheless",
-        "next",
-        "nine",
-        "no",
-        "nobody",
-        "none",
-        "noone",
-        "nor",
-        "not",
-        "nothing",
-        "now",
-        "nowhere",
-        "of",
-        "off",
-        "often",
-        "on",
-        "once",
-        "one",
-        "only",
-        "onto",
-        "or",
-        "other",
-        "others",
-        "otherwise",
+        "we",
         "our",
         "ours",
         "ourselves",
-        "out",
-        "over",
-        "own",
-        "part",
-        "per",
-        "perhaps",
-        "please",
-        "put",
-        "rather",
-        "re",
-        "same",
-        "see",
-        "seem",
-        "seemed",
-        "seeming",
-        "seems",
-        "serious",
-        "several",
-        "she",
-        "should",
-        "show",
-        "side",
-        "since",
-        "sincere",
-        "six",
-        "sixty",
-        "so",
-        "some",
-        "somehow",
-        "someone",
-        "something",
-        "sometime",
-        "sometimes",
-        "somewhere",
-        "still",
-        "such",
-        "system",
-        "take",
-        "ten",
-        "than",
-        "that",
-        "the",
-        "their",
-        "them",
-        "themselves",
-        "then",
-        "thence",
-        "there",
-        "thereafter",
-        "thereby",
-        "therefore",
-        "therein",
-        "thereupon",
-        "these",
-        "they",
-        "thick",
-        "thin",
-        "third",
-        "this",
-        "those",
-        "though",
-        "three",
-        "through",
-        "throughout",
-        "thru",
-        "thus",
-        "to",
-        "together",
-        "too",
-        "top",
-        "toward",
-        "towards",
-        "twelve",
-        "twenty",
-        "two",
-        "un",
-        "under",
-        "until",
-        "up",
-        "upon",
-        "us",
-        "very",
-        "via",
-        "was",
-        "we",
-        "well",
-        "were",
-        "what",
-        "whatever",
-        "when",
-        "whence",
-        "whenever",
-        "where",
-        "whereafter",
-        "whereas",
-        "whereby",
-        "wherein",
-        "whereupon",
-        "wherever",
-        "whether",
-        "which",
-        "while",
-        "whither",
-        "who",
-        "whoever",
-        "whole",
-        "whom",
-        "whose",
-        "why",
-        "will",
-        "with",
-        "within",
-        "without",
-        "would",
-        "yet",
         "you",
         "your",
         "yours",
         "yourself",
         "yourselves",
+        "he",
+        "him",
+        "his",
+        "himself",
+        "she",
+        "her",
+        "hers",
+        "herself",
+        "it",
+        "its",
+        "itself",
+        "they",
+        "them",
+        "their",
+        "theirs",
+        "themselves",
+        "what",
+        "which",
+        "who",
+        "whom",
+        "this",
+        "that",
+        "these",
+        "those",
+        "am",
+        "is",
+        "are",
+        "was",
+        "were",
+        "be",
+        "been",
+        "being",
+        "have",
+        "has",
+        "had",
+        "having",
+        "do",
+        "does",
+        "did",
+        "doing",
+        "a",
+        "an",
         "the",
+        "and",
+        "but",
+        "if",
+        "or",
+        "because",
+        "as",
+        "until",
+        "while",
+        "of",
+        "at",
+        "by",
+        "for",
+        "with",
+        "about",
+        "against",
+        "between",
+        "into",
+        "through",
+        "during",
+        "before",
+        "after",
+        "above",
+        "below",
+        "to",
+        "from",
+        "up",
+        "down",
+        "in",
+        "out",
+        "on",
+        "off",
+        "over",
+        "under",
+        "again",
+        "further",
+        "then",
+        "once",
+        "here",
+        "there",
+        "when",
+        "where",
+        "why",
+        "how",
+        "all",
+        "any",
+        "both",
+        "each",
+        "few",
+        "more",
+        "most",
+        "other",
+        "some",
+        "such",
+        "no",
+        "nor",
+        "not",
+        "only",
+        "own",
+        "same",
+        "so",
+        "than",
+        "too",
+        "very",
+        "s",
+        "t",
+        "can",
+        "will",
+        "just",
+        "don",
+        "should",
+        "now",
     ];
 }
-
 //heighlight searched word
-
 function mark() {
     var keyword = document.getElementById("keyword").value;
-
     var display = filecontent;
     var newContent = "";
-    console.log(keyword);
     let spans = document.querySelectorAll("mark");
     //<mark>harry</harry>
     //harry
-
     for (var i = 0; i < spans.length; i++) {
         spans[i].outerHTML = spans[i].innerHTML;
     }
@@ -488,22 +265,18 @@ function mark() {
         alert("enter a word to search");
     } else {
         var re = new RegExp(keyword, "gi");
-
         var replaceText = "<mark id='markme'>$&</mark>";
         var bookContent = display.innerHTML;
         //add the mark to book content
         newContent = bookContent.replace(re, replaceText);
-
         display.innerHTML = newContent;
-
+        //search stat
         var count = document.querySelectorAll("mark").length;
-
-        document.getElementById("searchstat").innerHTML =
-            "found" + " " + count + " " + "matche(s)";
-
+        document.getElementById(
+            "searchstat"
+        ).innerHTML = `found ${count} matche(s)`;
         if (count > 0) {
             var element = document.getElementById("markme");
-
             element.scrollIntoView();
         }
     }
